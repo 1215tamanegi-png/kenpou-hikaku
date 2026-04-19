@@ -3,34 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日本国籍と憲法改正を考える</title>
+    <title>日本国憲法・自民党草案 比較記録</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --ink: #1a1410;
+            --paper: #f5f0e8;
+            --aged: #e8dfc8;
+            --red: #8b1a1a;
+            --gold: #a0874a;
+            --muted: #6b5f4e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: sans-serif;
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: 'Noto Serif JP', serif;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f7f6;
-            color: #333;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
         }
-        h1 { font-size: 1.5rem; margin-bottom: 20px; }
-        .btn {
+
+        /* 背景の和紙テクスチャ風ノイズ */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 28px,
+                    rgba(160,135,74,0.07) 28px,
+                    rgba(160,135,74,0.07) 29px
+                );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 640px;
+            width: 100%;
+        }
+
+        /* 上部の赤い帯ライン */
+        .top-rule {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 36px;
+            animation: fadeIn 0.8s ease both;
+        }
+        .top-rule .line {
+            flex: 1;
+            height: 2px;
+            background: var(--red);
+        }
+        .top-rule .label {
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            color: var(--red);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        /* メインカード */
+        .card {
+            background: var(--aged);
+            border: 1px solid rgba(160,135,74,0.4);
+            padding: 48px 44px 44px;
+            position: relative;
+            box-shadow:
+                4px 4px 0 rgba(160,135,74,0.3),
+                8px 8px 0 rgba(160,135,74,0.15);
+            animation: slideUp 0.9s ease both 0.2s;
+        }
+
+        /* 角の飾り */
+        .card::before, .card::after {
+            content: '◆';
+            position: absolute;
+            font-size: 0.5rem;
+            color: var(--gold);
+        }
+        .card::before { top: 12px; left: 12px; }
+        .card::after  { bottom: 12px; right: 12px; }
+
+        .subtitle {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: clamp(1.3rem, 4vw, 1.75rem);
+            font-weight: 700;
+            line-height: 1.6;
+            color: var(--ink);
+            margin-bottom: 32px;
+            border-bottom: 1px solid rgba(160,135,74,0.4);
+            padding-bottom: 24px;
+        }
+
+        /* 推薦文ブロック */
+        .blurb {
+            margin-bottom: 36px;
+        }
+
+        .blurb-opener {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .blurb-opener::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.4;
+        }
+
+        .blurb-quote {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--ink);
+            font-weight: 400;
+        }
+
+        .blurb-highlight {
+            display: block;
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--red);
+            margin: 16px 0 12px;
+            line-height: 1.7;
+        }
+
+        /* 区切り */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 28px 0;
+            opacity: 0.4;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gold);
+        }
+        .divider span { font-size: 0.6rem; color: var(--gold); }
+
+        /* メタ情報 */
+        .meta {
+            font-size: 0.72rem;
+            color: var(--muted);
+            line-height: 1.9;
+            letter-spacing: 0.05em;
+            margin-bottom: 36px;
+        }
+        .meta span {
             display: inline-block;
-            padding: 15px 30px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-right: 16px;
         }
-        .btn:hover { background-color: #0056b3; }
+
+        /* PDFボタン */
+        .btn-wrap {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 36px;
+            background: var(--red);
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Shippori Mincho', serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            box-shadow: 3px 3px 0 rgba(139,26,26,0.35);
+        }
+
+        .btn::before {
+            content: '▶';
+            font-size: 0.65rem;
+            opacity: 0.8;
+        }
+
+        .btn:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0 rgba(139,26,26,0.35);
+        }
+
+        .btn:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0 rgba(139,26,26,0.35);
+        }
+
+        /* フッター注記 */
+        .note {
+            margin-top: 28px;
+            font-size: 0.68rem;
+            color: var(--muted);
+            text-align: center;
+            letter-spacing: 0.08em;
+            opacity: 0.7;
+        }
+
+        /* アニメーション */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .blurb { animation: slideUp 0.9s ease both 0.45s; }
+        .btn-wrap { animation: slideUp 0.9s ease both 0.65s; }
     </style>
 </head>
 <body>
+
+<div class="wrapper">
+
+    <div class="top-rule">
+        <div class="line"></div>
+        <div class="label">憲法逐条解析記録 2026</div>
+        <div class="line"></div>
+    </div>
+
+    <div class="card">
+        <div class="subtitle">日本国憲法 ／ 自民党改憲草案</div>
+        <h1>全条文対照・逐条解析<br>会話記録</h1>
+
+        <div class="blurb">
+            <div class="blurb-opener">推薦文</div>
+            <p class="blurb-quote">
+                法律の専門家でも学者でもない一人の人間が、条文を一行ずつ読み進めるうちに、「新・大日本帝国」の設計図を掘り当てた。
+            </p>
+            <span class="blurb-highlight">「ダサい」という直感は、正しかった。</span>
+            <p class="blurb-quote">
+                助言と<strong>承認</strong>が<strong>進言</strong>になる。個<strong>人</strong>として尊重が<strong>人</strong>として尊重になる。絶対にこれを禁ずるから<strong>絶対に</strong>が消える。
+            </p>
+
+            <div class="divider"><span>◆</span></div>
+
+            <p class="blurb-quote">
+                削られた一語、入れ替わった助詞、消えた主語——その一つひとつが、権力が「縛られる側」から「縛る側」へ移動した痕跡だった。
+            </p>
+            <p class="blurb-quote" style="margin-top:14px;">
+                憲法を読むとは、この国が誰のものかを問うことだ。
+            </p>
+        </div>
+
+        <div class="meta">
+            <span>対象：日本国憲法 全章</span>
+            <span>比較：自民党改憲草案（2012年）</span><br>
+            <span>記録期間：2026年4月7日〜18日</span>
+        </div>
+
+        <div class="btn-wrap">
+            <a href="kenpou-hikaku.pdf" class="btn">PDF資料を開く</a>
+        </div>
+    </div>
+
+    <p class="note">本資料は個人による逐条解析の会話記録です</p>
+
+</div>
+
+</body>
+</html>
 
     <h1>日本国憲法・自民党草案 比較表</h1>
     
