@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>憲法前文 比較</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+    background: #1a1a1a;
+    color: #e8e0d0;
+    line-height: 2;
+    padding: 2rem 1rem;
+  }
+  h1 {
+    text-align: center;
+    font-size: 1.3rem;
+    letter-spacing: 0.2em;
+    color: #c8b89a;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 1rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+  }
+  .col-header {
+    text-align: center;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 3px;
+  }
+  .col-current .col-header { background: #1e3a5f; color: #7fb3e0; }
+  .col-draft .col-header  { background: #3a1e1e; color: #e07f7f; }
+
+  .text-block {
+    font-size: 0.88rem;
+    padding: 1.2rem 1.4rem;
+    border-radius: 4px;
+    background: #252525;
+    border: 1px solid #333;
+  }
+
+  /* ハイライト種別 */
+  .del   { background: #5a1a1a; color: #ff9999; border-radius: 2px; padding: 0 2px; }
+  .add   { background: #1a3a1a; color: #88dd88; border-radius: 2px; padding: 0 2px; }
+  .subj  { background: #1a2a4a; color: #88bbff; border-radius: 2px; padding: 0 2px; } /* 主語 */
+  .duty  { background: #3a2a0a; color: #ffbb55; border-radius: 2px; padding: 0 2px; } /* 義務語彙 */
+  .power { background: #2a1a3a; color: #cc88ff; border-radius: 2px; padding: 0 2px; } /* 権力縛り */
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 0.8rem;
+    max-width: 1200px; margin: 0 auto 2rem;
+    font-size: 0.78rem;
+  }
+  .legend span {
+    padding: 2px 8px; border-radius: 3px;
+  }
+
+  /* 解釈セクション */
+  .analysis {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .analysis h2 {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: #c8b89a;
+    border-left: 3px solid #c8b89a;
+    padding-left: 0.8rem;
+    margin: 2rem 0 1rem;
+  }
+  .analysis table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    margin-bottom: 1.5rem;
+  }
+  .analysis th {
+    background: #2a2a2a;
+    padding: 0.6rem 1rem;
+    text-align: left;
+    border: 1px solid #444;
+    color: #aaa;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+  }
+  .analysis td {
+    padding: 0.7rem 1rem;
+    border: 1px solid #333;
+    vertical-align: top;
+  }
+  .analysis tr:nth-child(even) td { background: #222; }
+  .current-cell { color: #7fb3e0; }
+  .draft-cell   { color: #e07f7f; }
+  .note-cell    { color: #c8b89a; font-size: 0.8rem; line-height: 1.7; }
+
+  .summary {
+    background: #252525;
+    border: 1px solid #555;
+    border-left: 4px solid #c8b89a;
+    padding: 1.2rem 1.5rem;
+    font-size: 0.88rem;
+    margin-top: 2rem;
+    line-height: 2;
+  }
+  .summary strong { color: #ffcc66; }
+</style>
+</head>
+<body>
+
+<h1>日本国憲法 前文　vs　自民党改正草案 前文　逐語比較</h1>
+
+<div class="legend">
+  <span class="subj">主語</span>
+  <span class="power">権力を縛る文言</span>
+  <span class="del">削除・弱体化</span>
+  <span class="add">草案新出</span>
+  <span class="duty">義務・従属語彙</span>
+</div>
+
+<div class="grid">
+  <!-- 現行 -->
+  <div class="col-current">
+    <div class="col-header">◆ 現行憲法（1946年）</div>
+    <div class="text-block">
+      <span class="subj">日本国民は</span>、<span class="power">正当に選挙された</span>国会における代表者を通じて行動し、<span class="subj">われらと</span>われらの子孫のために、諸国民との協和による成果と、わが国全土にわたって自由のもたらす恵沢を確保し、<span class="power">政府の行為によって再び戦争の惨禍が起ることのないやうにすることを<strong>決意し</strong></span>、ここに<span class="power">主権が国民に存することを宣言し</span>、この憲法を確定する。
+      <br><br>
+      そもそも<span class="power">国政は、国民の厳粛な信託によるものであって、その権威は国民に由来し、その権力は国民の代表者がこれを行使し、その福利は国民がこれを享受する</span>。これは人類普遍の原理であり、この憲法は、かかる原理に基くものである。<span class="power">われらは、これに反する一切の憲法、法令及び詔勅を排除する</span>。
+      <br><br>
+      <span class="subj">日本国民は</span>、恒久の平和を念願し、人間相互の関係を支配する崇高な理想を深く自覚するのであって、平和を愛する諸国民の公正と信義に信頼して、<span class="subj">われらの</span>安全と生存を保持しようと<strong>決意した</strong>。<span class="subj">われらは</span>、平和を維持し、専制と隷従、圧迫と偏狭を地上から永遠に除去しようと努めてゐる国際社会において、名誉ある地位を占めたいと思ふ。<span class="subj">われらは</span>、全世界の国民が、ひとしく恐怖と欠乏から免かれ、平和のうちに生存する権利を有することを確認する。
+      <br><br>
+      <span class="subj">われらは</span>、いづれの国家も、自国のことのみに専念して他国を無視してはならないのであって、政治道徳の法則は、普遍的なものであり、この法則に従ふことは、自国の主権を維持し、他国と対等関係に立たうとする各国の責務であると信ずる。
+      <br><br>
+      <span class="subj">日本国民は</span>、国家の名誉にかけ、全力をあげてこの崇高な理想と目的を達成することを<strong>誓ふ</strong>。
+    </div>
+  </div>
+
+  <!-- 草案 -->
+  <div class="col-draft">
+    <div class="col-header">◆ 自民党改正草案（2012年）</div>
+    <div class="text-block">
+      <span class="add">日本国は</span>、<span class="add duty">長い歴史と固有の文化を持ち</span>、<span class="add duty">国民統合の象徴である天皇を戴く</span>国家であって、<span class="del">国民主権の下</span>、立法、行政及び司法の三権分立に基づいて統治される。
+      <br><br>
+      <span class="add">我が国は</span>、先の大戦による荒廃や幾多の大災害を乗り越えて発展し、今や国際社会において重要な地位を占めており、<span class="del">平和主義の下</span>、諸外国との友好関係を増進し、世界の平和と繁栄に貢献する。
+      <br><br>
+      <span class="subj">日本国民は</span>、<span class="duty">国と郷土を誇りと気概を持って自ら守り</span>、基本的人権を尊重するとともに、<span class="duty">和を尊び、家族や社会全体が互いに助け合って</span>国家を形成する。
+      <br><br>
+      <span class="add">我々は</span>、<span class="duty">自由と規律を重んじ</span>、<span class="duty">美しい国土と自然環境を守りつつ</span>、教育や科学技術を振興し、活力ある経済活動を通じて国を成長させる。
+      <br><br>
+      <span class="subj">日本国民は</span>、<span class="duty">良き伝統と我々の国家を末永く子孫に継承するため</span>、ここに、この憲法を制定する。
+      <br><br>
+      <span class="del">※「政府の行為によって〜」消滅</span><br>
+      <span class="del">※「国民の厳粛な信託」消滅</span><br>
+      <span class="del">※「これに反する一切の〜排除する」消滅</span><br>
+      <span class="del">※「恐怖と欠乏から免かれる権利」消滅</span><br>
+      <span class="del">※「決意した／誓ふ」→「制定する」に平板化</span>
+    </div>
+  </div>
+</div>
+
+<!-- 解釈テーブル -->
+<div class="analysis">
+
+  <h2>① 主語の変化</h2>
+  <table>
+    <tr>
+      <th>現行憲法</th>
+      <th>自民党草案</th>
+      <th>意味</th>
+    </tr>
+    <tr>
+      <td class="current-cell">日本国民は〜行動し</td>
+      <td class="draft-cell">日本国は〜統治される</td>
+      <td class="note-cell">主語が「能動的な国民」から「実体としての国家」へ。国民は国家の属性として登場する。</td>
+    </tr>
+    <tr>
+      <td class="current-cell">われらと われらの子孫のために</td>
+      <td class="draft-cell">（消滅）</td>
+      <td class="note-cell">「われら」という一人称複数が消える＝国民が主体として語る文体が消える。</td>
+    </tr>
+    <tr>
+      <td class="current-cell">われらは、平和を維持し〜</td>
+      <td class="draft-cell">我が国は〜貢献する</td>
+      <td class="note-cell">「われら」→「我が国」。主語が人から国家機構へ。</td>
+    </tr>
+  </table>
+
+  <h2>② 権力を縛る文言の消滅</h2>
+  <table>
+    <tr>
+      <th>現行憲法にある文言</th>
+      <th>草案</th>
+      <th>消えた意味</th>
+    </tr>
+    <tr>
+      <td class="current-cell">政府の行為によって再び戦争の惨禍が起ることのないやうにすることを決意し</td>
+      <td class="draft-cell">消滅</td>
+      <td class="note-cell">戦争責任の主体が「政府」であるという認定が消える。誰が起こしたのか曖昧化。</td>
+    </tr>
+    <tr>
+      <td class="current-cell">国政は、国民の厳粛な信託によるもの</td>
+      <td class="draft-cell">消滅</td>
+      <td class="note-cell">権力は「預かりもの」という概念の消滅。権力が自明の存在になる。</td>
+    </tr>
+    <tr>
+      <td class="current-cell">これに反する一切の憲法、法令及び詔勅を排除する</td>
+      <td class="draft-cell">消滅</td>
+      <td class="note-cell">憲法の最高法規性の宣言が前文から消える。草案自体が現行憲法に違反する構造を自己否定できなくなる。</td>
+    </tr>
+    <tr>
+      <td class="current-cell">正当に選挙された</td>
+      <td class="draft-cell">消滅</td>
+      <td class="note-cell">代表者の正統性要件が消える。「どんな権力者でも統治できる」構造へ。</td>
+    </tr>
+  </table>
+
+  <h2>③ 草案に新出した語彙（義務・従属）</h2>
+  <table>
+    <tr>
+      <th>草案の新出語彙</th>
+      <th>機能</th>
+    </tr>
+    <tr>
+      <td class="duty">長い歴史と固有の文化</td>
+      <td class="note-cell">国家のアイデンティティを「歴史・文化」に根拠づける。変えることへの抵抗感を生む。</td>
+    </tr>
+    <tr>
+      <td class="duty">国と郷土を誇りと気概を持って自ら守り</td>
+      <td class="note-cell">防衛義務の植え付け。「自ら守る」＝徴兵の布石となりうる語彙。</td>
+    </tr>
+    <tr>
+      <td class="duty">和を尊び、家族や社会全体が互いに助け合って</td>
+      <td class="note-cell">「和」による異議申し立ての抑制。家族・社会への互助義務化＝国家責任の民間移転。</td>
+    </tr>
+    <tr>
+      <td class="duty">良き伝統と我々の国家を末永く子孫に継承するため</td>
+      <td class="note-cell">憲法制定の目的が「人権保障」から「国家・伝統の継承」へ逆転。</td>
+    </tr>
+  </table>
+
+  <h2>④ 締め方の変化——「決意・誓い」から「制定する」へ</h2>
+  <table>
+    <tr>
+      <th>現行憲法</th>
+      <th>自民党草案</th>
+      <th>意味</th>
+    </tr>
+    <tr>
+      <td class="current-cell">安全と生存を保持しようと<strong>決意した</strong></td>
+      <td class="draft-cell">（消滅）</td>
+      <td class="note-cell" rowspan="3">現行は「決意・誓い」という強い意志動詞で締める。国民が主体として誓約する文体。草案は「制定する」という事務的な動詞のみ。誰が何を誓っているのかが消える。</td>
+    </tr>
+    <tr>
+      <td class="current-cell">この崇高な理想と目的を達成することを<strong>誓ふ</strong></td>
+      <td class="draft-cell">（消滅）</td>
+    </tr>
+    <tr>
+      <td class="current-cell">（3か所に意志動詞）</td>
+      <td class="draft-cell">この憲法を<strong>制定する</strong>（のみ）</td>
+    </tr>
+  </table>
+
+  <div class="summary">
+    <strong>一行要約：</strong><br>
+    現行憲法前文＝「権力よ、踏み外すな」と国民が権力に突きつける文書<br>
+    自民党草案前文＝「国民よ、国家に仕えよ」と国家が国民に命じる文書<br><br>
+    <strong>構造的結論：</strong><br>
+    草案は「国民主権」という言葉を前文に残しながら、主権の根拠・行使・縛りをすべて削除している。看板だけ残して中身を入れ替えた文書であり、現行憲法98条（「これに反する一切の〜を排除する」）に正面から抵触する。
+  </div>
+
+</div>
+</body>
+</html>
