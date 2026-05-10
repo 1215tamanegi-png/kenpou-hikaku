@@ -31,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* 背景の和紙テクスチャ風ノイズ */
         body::before {
             content: '';
             position: fixed;
@@ -55,7 +54,6 @@
             width: 100%;
         }
 
-        /* 上部の赤い帯ライン */
         .top-rule {
             display: flex;
             align-items: center;
@@ -63,11 +61,7 @@
             margin-bottom: 36px;
             animation: fadeIn 0.8s ease both;
         }
-        .top-rule .line {
-            flex: 1;
-            height: 2px;
-            background: var(--red);
-        }
+        .top-rule .line { flex: 1; height: 2px; background: var(--red); }
         .top-rule .label {
             font-size: 0.65rem;
             letter-spacing: 0.25em;
@@ -76,19 +70,15 @@
             white-space: nowrap;
         }
 
-        /* メインカード */
         .card {
             background: var(--aged);
             border: 1px solid rgba(160,135,74,0.4);
             padding: 48px 44px 44px;
             position: relative;
-            box-shadow:
-                4px 4px 0 rgba(160,135,74,0.3),
-                8px 8px 0 rgba(160,135,74,0.15);
+            box-shadow: 4px 4px 0 rgba(160,135,74,0.3), 8px 8px 0 rgba(160,135,74,0.15);
             animation: slideUp 0.9s ease both 0.2s;
         }
 
-        /* 角の飾り */
         .card::before, .card::after {
             content: '◆';
             position: absolute;
@@ -116,10 +106,7 @@
             padding-bottom: 24px;
         }
 
-        /* 推薦文ブロック */
-        .blurb {
-            margin-bottom: 36px;
-        }
+        .blurb { margin-bottom: 36px; }
 
         .blurb-opener {
             font-size: 0.75rem;
@@ -155,7 +142,6 @@
             line-height: 1.7;
         }
 
-        /* 区切り */
         .divider {
             display: flex;
             align-items: center;
@@ -171,7 +157,6 @@
         }
         .divider span { font-size: 0.6rem; color: var(--gold); }
 
-        /* メタ情報 */
         .meta {
             font-size: 0.72rem;
             color: var(--muted);
@@ -179,15 +164,9 @@
             letter-spacing: 0.05em;
             margin-bottom: 36px;
         }
-        .meta span {
-            display: inline-block;
-            margin-right: 16px;
-        }
+        .meta span { display: inline-block; margin-right: 16px; }
 
-        /* PDFボタン */
-        .btn-wrap {
-            text-align: center;
-        }
+        .btn-wrap { text-align: center; }
 
         .btn {
             display: inline-flex;
@@ -203,28 +182,61 @@
             letter-spacing: 0.1em;
             border: none;
             cursor: pointer;
-            position: relative;
             transition: transform 0.15s ease, box-shadow 0.15s ease;
             box-shadow: 3px 3px 0 rgba(139,26,26,0.35);
         }
+        .btn::before { content: '▶'; font-size: 0.65rem; opacity: 0.8; }
+        .btn:hover { transform: translate(-1px,-1px); box-shadow: 5px 5px 0 rgba(139,26,26,0.35); }
+        .btn:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 rgba(139,26,26,0.35); }
 
-        .btn::before {
-            content: '▶';
-            font-size: 0.65rem;
-            opacity: 0.8;
+        /* ── 追加資料カード ── */
+        .sub-cards {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            animation: slideUp 0.9s ease both 0.8s;
         }
 
-        .btn:hover {
-            transform: translate(-1px, -1px);
-            box-shadow: 5px 5px 0 rgba(139,26,26,0.35);
+        .sub-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255,255,255,0.45);
+            border: 1px solid rgba(160,135,74,0.35);
+            padding: 14px 20px;
+            text-decoration: none;
+            color: var(--ink);
+            transition: background 0.15s ease, transform 0.15s ease;
+        }
+        .sub-card:hover {
+            background: rgba(255,255,255,0.7);
+            transform: translateX(3px);
+        }
+        .sub-card-icon {
+            font-size: 1.1rem;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .sub-card-body { flex: 1; }
+        .sub-card-title {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .sub-card-desc {
+            font-size: 0.7rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            line-height: 1.6;
+        }
+        .sub-card-arrow {
+            color: var(--red);
+            font-size: 0.75rem;
+            flex-shrink: 0;
         }
 
-        .btn:active {
-            transform: translate(1px, 1px);
-            box-shadow: 1px 1px 0 rgba(139,26,26,0.35);
-        }
-
-        /* フッター注記 */
         .note {
             margin-top: 28px;
             font-size: 0.68rem;
@@ -234,11 +246,7 @@
             opacity: 0.7;
         }
 
-        /* アニメーション */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -291,9 +299,27 @@
         <div class="btn-wrap">
             <a href="https://tamanegi.shop/2026/04/23/kenpou-zentai/" class="btn">資料を開く</a>
         </div>
+
+        <!-- 追加資料カード -->
+        <div class="sub-cards">
+            <a href="preambule_compare.html" class="sub-card">
+                <div class="sub-card-icon">§</div>
+                <div class="sub-card-body">
+                    <div class="sub-card-title">前文 逐語比較</div>
+                    <div class="sub-card-desc">主語の変化・権力を縛る文言の消滅・新出語彙を色分けで可視化</div>
+                </div>
+                <div class="sub-card-arrow">▶</div>
+            </a>
+        </div>
+
     </div>
 
     <p class="note">本資料は個人による逐条解析の会話記録です</p>
+
+</div>
+
+</body>
+</html>
 
 </div>
 
