@@ -1,327 +1,411 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日本国憲法・自民党草案 比較記録</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --ink: #1a1410;
-            --paper: #f5f0e8;
-            --aged: #e8dfc8;
-            --red: #8b1a1a;
-            --gold: #a0874a;
-            --muted: #6b5f4e;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本国憲法・自民党草案 比較記録</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1e1e1e;
+      --border: #2a2a2a;
+      --accent: #c8a96e;
+      --accent2: #7eb8c8;
+      --text: #e8e4dc;
+      --text-muted: #888;
+      --text-dim: #555;
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            background-color: var(--paper);
-            color: var(--ink);
-            font-family: 'Noto Serif JP', serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            position: relative;
-            overflow-x: hidden;
-        }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'HGS明朝E', serif;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
 
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 28px,
-                    rgba(160,135,74,0.07) 28px,
-                    rgba(160,135,74,0.07) 29px
-                );
-            pointer-events: none;
-            z-index: 0;
-        }
+    /* ── ヘッダー ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-        .wrapper {
-            position: relative;
-            z-index: 1;
-            max-width: 640px;
-            width: 100%;
-        }
+    .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
 
-        .top-rule {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 36px;
-            animation: fadeIn 0.8s ease both;
-        }
-        .top-rule .line { flex: 1; height: 2px; background: var(--red); }
-        .top-rule .label {
-            font-size: 0.65rem;
-            letter-spacing: 0.25em;
-            color: var(--red);
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
+    h1 {
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+    h1 span {
+      color: var(--text-muted);
+      font-size: 0.75em;
+    }
 
-        .card {
-            background: var(--aged);
-            border: 1px solid rgba(160,135,74,0.4);
-            padding: 48px 44px 44px;
-            position: relative;
-            box-shadow: 4px 4px 0 rgba(160,135,74,0.3), 8px 8px 0 rgba(160,135,74,0.15);
-            animation: slideUp 0.9s ease both 0.2s;
-        }
+    .subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-top: 0.8rem;
+    }
 
-        .card::before, .card::after {
-            content: '◆';
-            position: absolute;
-            font-size: 0.5rem;
-            color: var(--gold);
-        }
-        .card::before { top: 12px; left: 12px; }
-        .card::after  { bottom: 12px; right: 12px; }
+    /* ── 推薦文 ── */
+    .quote-block {
+      max-width: 680px;
+      margin: 2.5rem auto;
+      padding: 2rem 2rem 2rem 2.5rem;
+      border-left: 2px solid var(--accent);
+      background: var(--surface);
+    }
+    .quote-block p {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+    .quote-block p:last-child { margin-bottom: 0; }
+    .quote-block .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .divider {
+      text-align: center;
+      color: var(--text-dim);
+      margin: 1rem 0;
+      font-size: 1.2rem;
+    }
+    .meta {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      margin-top: 1rem;
+    }
 
-        .subtitle {
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
-            color: var(--muted);
-            margin-bottom: 16px;
-        }
+    /* ── メインコンテンツ ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
 
-        h1 {
-            font-family: 'Shippori Mincho', serif;
-            font-size: clamp(1.3rem, 4vw, 1.75rem);
-            font-weight: 700;
-            line-height: 1.6;
-            color: var(--ink);
-            margin-bottom: 32px;
-            border-bottom: 1px solid rgba(160,135,74,0.4);
-            padding-bottom: 24px;
-        }
+    /* ── セクション見出し ── */
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
 
-        .blurb { margin-bottom: 36px; }
+    /* ── カードリスト ── */
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
 
-        .blurb-opener {
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            color: var(--gold);
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .blurb-opener::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--gold);
-            opacity: 0.4;
-        }
+    .card {
+      display: flex;
+      align-items: stretch;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      background: var(--surface2);
+    }
+    .card:hover .card-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
 
-        .blurb-quote {
-            font-size: 1.05rem;
-            line-height: 2;
-            color: var(--ink);
-            font-weight: 400;
-        }
+    .card-num {
+      width: 3.2rem;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      border-right: 1px solid var(--border);
+      background: rgba(200,169,110,0.04);
+      font-family: 'Courier New', monospace;
+    }
 
-        .blurb-highlight {
-            display: block;
-            font-family: 'Shippori Mincho', serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--red);
-            margin: 16px 0 12px;
-            line-height: 1.7;
-        }
+    .card-body {
+      padding: 0.9rem 1.2rem;
+      flex: 1;
+    }
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+    .card-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
 
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 28px 0;
-            opacity: 0.4;
-        }
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--gold);
-        }
-        .divider span { font-size: 0.6rem; color: var(--gold); }
+    .card-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 1.2rem;
+      color: var(--text-dim);
+      font-size: 1rem;
+      transition: color 0.2s, transform 0.2s;
+    }
 
-        .meta {
-            font-size: 0.72rem;
-            color: var(--muted);
-            line-height: 1.9;
-            letter-spacing: 0.05em;
-            margin-bottom: 36px;
-        }
-        .meta span { display: inline-block; margin-right: 16px; }
+    /* 特別カード（全体ざっと読み） */
+    .card-featured {
+      border-color: rgba(200,169,110,0.3);
+      background: linear-gradient(90deg, rgba(200,169,110,0.05) 0%, var(--surface) 100%);
+    }
+    .card-featured .card-num {
+      color: var(--accent);
+      background: rgba(200,169,110,0.08);
+    }
 
-        .btn-wrap { text-align: center; }
+    /* 深掘りカード */
+    .card-deep .card-num {
+      color: var(--accent2);
+      background: rgba(126,184,200,0.05);
+      border-right-color: rgba(126,184,200,0.2);
+    }
+    .card-deep:hover {
+      border-color: var(--accent2);
+    }
+    .card-deep:hover .card-arrow {
+      color: var(--accent2);
+    }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 36px;
-            background: var(--red);
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Shippori Mincho', serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-            box-shadow: 3px 3px 0 rgba(139,26,26,0.35);
-        }
-        .btn::before { content: '▶'; font-size: 0.65rem; opacity: 0.8; }
-        .btn:hover { transform: translate(-1px,-1px); box-shadow: 5px 5px 0 rgba(139,26,26,0.35); }
-        .btn:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 rgba(139,26,26,0.35); }
+    /* ── フッター ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+    }
 
-        /* ── 追加資料カード ── */
-        .sub-cards {
-            margin-top: 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            animation: slideUp 0.9s ease both 0.8s;
-        }
-
-        .sub-card {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            background: rgba(255,255,255,0.45);
-            border: 1px solid rgba(160,135,74,0.35);
-            padding: 14px 20px;
-            text-decoration: none;
-            color: var(--ink);
-            transition: background 0.15s ease, transform 0.15s ease;
-        }
-        .sub-card:hover {
-            background: rgba(255,255,255,0.7);
-            transform: translateX(3px);
-        }
-        .sub-card-icon {
-            font-size: 1.1rem;
-            color: var(--gold);
-            flex-shrink: 0;
-        }
-        .sub-card-body { flex: 1; }
-        .sub-card-title {
-            font-family: 'Shippori Mincho', serif;
-            font-size: 0.92rem;
-            font-weight: 700;
-            margin-bottom: 3px;
-        }
-        .sub-card-desc {
-            font-size: 0.7rem;
-            color: var(--muted);
-            letter-spacing: 0.05em;
-            line-height: 1.6;
-        }
-        .sub-card-arrow {
-            color: var(--red);
-            font-size: 0.75rem;
-            flex-shrink: 0;
-        }
-
-        .note {
-            margin-top: 28px;
-            font-size: 0.68rem;
-            color: var(--muted);
-            text-align: center;
-            letter-spacing: 0.08em;
-            opacity: 0.7;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .blurb { animation: slideUp 0.9s ease both 0.45s; }
-        .btn-wrap { animation: slideUp 0.9s ease both 0.65s; }
-    </style>
+    /* ── レスポンシブ ── */
+    @media (max-width: 480px) {
+      header { padding: 2rem 1rem 1.8rem; }
+      .quote-block { margin: 1.5rem 1rem; padding: 1.5rem 1.2rem 1.5rem 1.5rem; }
+      .card-num { width: 2.4rem; font-size: 0.6rem; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="wrapper">
+<header>
+  <p class="eyebrow">憲法逐条解析記録 2026</p>
+  <h1>日本国憲法 ／ 自民党改憲草案<br><span>全条文対照・逐条解析 会話記録</span></h1>
+  <p class="subtitle">対象：日本国憲法 全章　比較：自民党改憲草案（2012年）　記録期間：2026年4月7日〜18日</p>
+</header>
 
-    <div class="top-rule">
-        <div class="line"></div>
-        <div class="label">憲法逐条解析記録 2026</div>
-        <div class="line"></div>
-    </div>
-
-    <div class="card">
-        <div class="subtitle">日本国憲法 ／ 自民党改憲草案</div>
-        <h1>全条文対照・逐条解析<br>会話記録</h1>
-
-        <div class="blurb">
-            <div class="blurb-opener">推薦文</div>
-            <p class="blurb-quote">
-                法律の専門家でも学者でもない一人の人間が、条文を一行ずつ読み進めるうちに、「新・大日本帝国」の設計図を掘り当てた。
-            </p>
-            <span class="blurb-highlight">「ダサい」という直感は、正しかった。</span>
-            <p class="blurb-quote">
-                助言と<strong>承認</strong>が<strong>進言</strong>になる。個<strong>人</strong>として尊重が<strong>人</strong>として尊重になる。絶対にこれを禁ずるから<strong>絶対に</strong>が消える。
-            </p>
-
-            <div class="divider"><span>◆</span></div>
-
-            <p class="blurb-quote">
-                削られた一語、入れ替わった助詞、消えた主語——その一つひとつが、権力が「縛られる側」から「縛る側」へ移動した痕跡だった。
-            </p>
-            <p class="blurb-quote" style="margin-top:14px;">
-                憲法を読むとは、この国が誰のものかを問うことだ。
-            </p>
-        </div>
-
-        <div class="meta">
-            <span>対象：日本国憲法 全章</span>
-            <span>比較：自民党改憲草案（2012年）</span><br>
-            <span>記録期間：2026年4月7日〜18日</span>
-        </div>
-
-        <div class="btn-wrap">
-            <a href="https://tamanegi.shop/2026/04/23/kenpou-zentai/" class="btn">資料を開く</a>
-        </div>
-
-        <!-- 追加資料カード -->
-        <div class="sub-cards">
-            <a href="preambule_compare.html" class="sub-card">
-                <div class="sub-card-icon">§</div>
-                <div class="sub-card-body">
-                    <div class="sub-card-title">前文 逐語比較</div>
-                    <div class="sub-card-desc">主語の変化・権力を縛る文言の消滅・新出語彙を色分けで可視化</div>
-                </div>
-                <div class="sub-card-arrow">▶</div>
-            </a>
-        </div>
-
-    </div>
-
-    <p class="note">本資料は個人による逐条解析の会話記録です</p>
-
+<div class="quote-block">
+  <p>法律の専門家でも学者でもない一人の人間が、条文を一行ずつ読み進めるうちに、「新・大日本帝国」の設計図を掘り当てた。</p>
+  <p>「ダサい」という直感は、正しかった。</p>
+  <p>助言と<span class="highlight">承認</span>が<span class="highlight">進言</span>になる。個<span class="highlight">人</span>として尊重が<span class="highlight">人</span>として尊重になる。絶対にこれを禁ずるから<span class="highlight">絶対に</span>が消える。</p>
+  <div class="divider">◆</div>
+  <p>削られた一語、入れ替わった助詞、消えた主語——その一つひとつが、権力が「縛られる側」から「縛る側」へ移動した痕跡だった。</p>
+  <p>憲法を読むとは、この国が誰のものかを問うことだ。</p>
 </div>
 
-</body>
-</html>
+<main>
 
-</div>
+  <!-- 逐条解説 -->
+  <p class="section-label">逐条解説</p>
+  <div class="card-list">
+
+    <a class="card card-featured" href="https://tamanegi.shop/2026/04/23/kenpou-zentai/" target="_blank" rel="noopener">
+      <div class="card-num">全体</div>
+      <div class="card-body">
+        <div class="card-title">憲法と改正案・全体ざっと読み</div>
+        <div class="card-sub">全章をざっと概観する</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card" href="https://tamanegi.shop/2026/04/23/kenpou-read/" target="_blank" rel="noopener">
+      <div class="card-num">緊急</div>
+      <div class="card-body">
+        <div class="card-title">憲法と改正案・緊急事態条項</div>
+        <div class="card-sub">緊急事態条項の構造と問題点</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card" href="https://tamanegi.shop/2026/04/23/kenpou-zenbun/" target="_blank" rel="noopener">
+      <div class="card-num">前文</div>
+      <div class="card-body">
+        <div class="card-title">憲法と改正案・前文</div>
+        <div class="card-sub">主語の変化・権力を縛る文言の消滅</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card" href="https://1215tamanegi-png.github.io/kenpou-hikaku/preambule_compare.html" target="_blank" rel="noopener">
+      <div class="card-num">前文図</div>
+      <div class="card-body">
+        <div class="card-title">日本国憲法 前文 vs 自民党改正草案 前文　逐語比較</div>
+        <div class="card-sub">新出語彙・削除語彙を色分けで可視化</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card" href="https://tamanegi.shop/2026/04/23/kenpou-1/" target="_blank" rel="noopener">
+      <div class="card-num">1・2章</div>
+      <div class="card-body">
+        <div class="card-title">憲法と改正案・第一章、第二章</div>
+        <div class="card-sub">天皇・戦争の放棄</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card" href="https://tamanegi.shop/2026/04/23/kenpou-3-1/" target="_blank" rel="noopener">
+      <div class="card-num">3章-1</div>
+      <div class="card-body">
+        <div class="card-title">憲法と改正案・第三章-１</div>
+        <div class="card-sub">国民の権利及び義務（前半）</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card" href="https://tamanegi.shop/2026/04/23/kenpou-3-2/" target="_blank" rel="noopener">
+      <div class="card-num">3章-2</div>
+      <div class="card-body">
+        <div class="card-title">憲法と改正案・第三章-２</div>
+        <div class="card-sub">国民の権利及び義務（後半）</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card" href="https://tamanegi.shop/2026/04/23/kenpou-4/" target="_blank" rel="noopener">
+      <div class="card-num">4章</div>
+      <div class="card-body">
+        <div class="card-title">憲法と改正案・第四章</div>
+        <div class="card-sub">国会</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card" href="https://tamanegi.shop/2026/04/23/kenpou-5/" target="_blank" rel="noopener">
+      <div class="card-num">5章</div>
+      <div class="card-body">
+        <div class="card-title">憲法と改正案・第五章</div>
+        <div class="card-sub">内閣</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card" href="https://tamanegi.shop/2026/04/23/kenpou-6/" target="_blank" rel="noopener">
+      <div class="card-num">6章</div>
+      <div class="card-body">
+        <div class="card-title">憲法と改正案・第六章</div>
+        <div class="card-sub">司法</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card" href="https://tamanegi.shop/2026/04/23/kenpou-7/" target="_blank" rel="noopener">
+      <div class="card-num">7章</div>
+      <div class="card-body">
+        <div class="card-title">憲法と改正案・第七章</div>
+        <div class="card-sub">財政</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card" href="https://tamanegi.shop/2026/05/01/kenpo-8/" target="_blank" rel="noopener">
+      <div class="card-num">8章</div>
+      <div class="card-body">
+        <div class="card-title">憲法と改正案・第八章</div>
+        <div class="card-sub">地方自治</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card" href="https://tamanegi.shop/2026/05/01/kenpo-10/" target="_blank" rel="noopener">
+      <div class="card-num">10・11章</div>
+      <div class="card-body">
+        <div class="card-title">憲法と改正案・第10,11章</div>
+        <div class="card-sub">改正・最高法規</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+  </div>
+
+  <!-- 深掘り -->
+  <p class="section-label">深掘り</p>
+  <div class="card-list">
+
+    <a class="card card-deep" href="https://tamanegi.shop/2026/05/01/ask/" target="_blank" rel="noopener">
+      <div class="card-num">深掘り</div>
+      <div class="card-body">
+        <div class="card-title">憲法改正議論の前提を問う</div>
+        <div class="card-sub">そもそも何を議論しているのか</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+    <a class="card card-deep" href="https://tamanegi.shop/2026/05/01/meaning/" target="_blank" rel="noopener">
+      <div class="card-num">深掘り</div>
+      <div class="card-body">
+        <div class="card-title">97条削除の意味</div>
+        <div class="card-sub">基本的人権の本質規定が消えた</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </a>
+
+  </div>
+
+  <p class="meta" style="margin-top: 2.5rem;">本資料は個人による逐条解析の会話記録です</p>
+
+</main>
+
+<footer>
+  © 2026 憲法逐条解析記録
+</footer>
 
 </body>
 </html>
